@@ -57,7 +57,7 @@
   users.users.markus = {
     isNormalUser = true;
     description = "Markus Dam";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
     ];
   };
@@ -136,6 +136,10 @@
 
   # Enable fingerprint scanner
   services.fprintd.enable = true;
+
+  # enable virtualization
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   security.pam.services = {
     login.fprintAuth = true;
