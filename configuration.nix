@@ -71,7 +71,6 @@
   # Enable experimental features that aren't really experimental
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Stupid way to install visual paradigm since it isn't on nixpkgs and i don't really wanna maintain it..
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
