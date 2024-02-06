@@ -1,0 +1,16 @@
+[
+./colors.lua
+#./dap.lua
+./formatter.lua
+./fugitive.lua
+./harpoon.lua
+#./leap.lua
+./lsp.lua
+./luasnip.lua
+./nerdtree.lua
+./telescope.lua
+#./treesitter.lua
+./trouble.lua
+#./undotree.lua
+./vimtex.lua
+]
