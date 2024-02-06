@@ -6,8 +6,8 @@
 
   home.shellAliases = {
       nixcfg = "nvim ~/flake/configuration.nix";
-      homecfg = "sudoedit ~/flake/home.nix";
-      flakecfg = "sudoedit ~/flake/flake.nix";
+      homecfg = "nvim ~/flake/home.nix";
+      flakecfg = "nvim ~/flake/flake.nix";
       nix-switch = "sudo nixos-rebuild switch --flake ~/flake#nixos";
       nix-test = "sudo nixos-rebuild test --flake ~/flake#nixos";
       gaa="git add .";
