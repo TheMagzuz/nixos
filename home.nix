@@ -58,7 +58,6 @@
     syntaxHighlighting.enable = true;
   };
 
-  # TODO: set this up
   programs.neovim =  import ./config/nvim { inherit pkgs lib; };
 
   programs.starship = {
