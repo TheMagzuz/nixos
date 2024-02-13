@@ -41,8 +41,7 @@
         lsp-zero-nvim
         # lsp support
         nvim-lspconfig
-        mason-nvim
-        mason-lspconfig-nvim
+
         # autocompletion
         nvim-cmp
         cmp-buffer
@@ -62,4 +61,10 @@
     extraLuaConfig = builtins.concatStringsSep "\n" ((map lib.strings.fileContents (import ./luacfg)) ++ [
 
     ]);
+    extraPackages = with pkgs; [
+        rust-analyzer
+        lua-language-server
+        nil
+        texlab
+    ];
 }
