@@ -11,10 +11,31 @@
         telescope-nvim
         dracula-nvim
         nvim-treesitter.withAllGrammars
+        # git plugins
         vim-fugitive
+        vim-rhubarb
+
+        # symbols in the gutter and git utilities
+        {
+          plugin = gitsigns-nvim;
+          config = "lua << EOF\n"+ lib.strings.fileContents ./luacfg/plugin/gitsigns.lua + "\nEOF";
+        }
+
+        # comment lines with "gc"
+        comment-nvim
+
+        # detect tabstop and shiftwidth automatically
+        vim-sleuth
+
+        # status notifications
+        fidget-nvim
+
+        # show pending keybinds
+        which-key-nvim
+
         vim-repeat
         vim-surround
-        vim-gitgutter
+
 
         # lsp-zero dependencies
         lsp-zero-nvim
