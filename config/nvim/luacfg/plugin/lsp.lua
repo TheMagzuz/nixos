@@ -51,3 +51,7 @@ cfg.lua_ls.setup({
 cfg.rust_analyzer.setup({})
 cfg.nil_ls.setup({})
 cfg.texlab.setup({})
+cfg.omnisharp.setup({
+  cmd = { "OmniSharp" },
+  enable_editorconfig_support = true,
+})
