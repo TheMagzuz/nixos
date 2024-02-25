@@ -99,6 +99,9 @@
     windowManager.i3.enable = true;
   };
 
+  # make dynamically linked binaries work without patching
+  programs.nix-ld.enable = true;
+
   programs.java = {
     enable = true;
     package = pkgs.jdk11;
@@ -140,6 +143,8 @@
   # enable virtualization
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+
+  programs.steam.enable = true;
 
   security.pam.services = {
     login.fprintAuth = true;
