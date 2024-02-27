@@ -114,6 +114,9 @@
     enable = true;
     settings = import ./config/polybar.nix;
     script = "polybar top &";
+    package = pkgs.polybar.override {
+      pulseSupport = true;
+    };
   };
 
   services.dunst.enable = true;

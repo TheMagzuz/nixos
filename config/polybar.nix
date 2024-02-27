@@ -151,7 +151,7 @@
     label-volume = "%percentage%%";
 
     format-muted = "<label-muted>";
-    label-muted = "ﱝ %percentage%%";
+    label-muted = "󰝟 %percentage%%";
     label-muted-foreground = "\${colors.disabled}";
   };
 
