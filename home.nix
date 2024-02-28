@@ -49,7 +49,6 @@
       lf
       pdfgrep
       obsidian
-      vscode
   ];
   programs.zsh = {
     enable = true;
