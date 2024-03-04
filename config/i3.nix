@@ -30,6 +30,10 @@ rec {
     "${modifier}+shift+j" = "move down";
     "${modifier}+shift+k" = "move up";
     "${modifier}+shift+l" = "move right";
+    "${modifier}+comma" = "focus output left";
+    "${modifier}+period" = "focus output right";
+    "${modifier}+shift+comma" = "move container to output left";
+    "${modifier}+shift+period" = "move container to output right";
 
     "${modifier}+q" = "kill";
 
