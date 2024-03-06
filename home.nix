@@ -100,6 +100,14 @@
 
   programs.gh.enable = true;
   programs.tmux.enable = true;
+  programs.git.delta = {
+    enable = true;
+    options = {
+      line-numbers = true;
+      theme = "dracula";
+      navigate = true;
+    };
+  };
 
   # Setup i3wm
   xsession = {
