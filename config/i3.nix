@@ -1,5 +1,7 @@
 { pkgs, lib, ... }: 
-rec {
+let
+    locker = "${pkgs.i3lock}/bin/i3lock --nofork"; 
+in rec {
   focus.wrapping = "workspace";
   focus.mouseWarping = true;
   fonts = {
@@ -20,7 +22,9 @@ rec {
   assigns = {
     "2" = [{ class = "Discord"; }];
   };
-  keybindings = let scratchpadCmd = cmd: "exec ${terminal} --class 'scratchpad' -T '${cmd}' -o confirm_os_window_close=0 ${cmd}"; in lib.mkOptionDefault {
+  keybindings = let
+    scratchpadCmd = cmd: "exec ${terminal} --class 'scratchpad' -T '${cmd}' -o confirm_os_window_close=0 ${cmd}";
+  in lib.mkOptionDefault {
     # Moving around
     "${modifier}+h" = "focus left";
     "${modifier}+j" = "focus down";
@@ -55,6 +59,7 @@ rec {
     "${modifier}+Shift+s" = "exec --no-startup-id maim -s | xclip -selection clipboard -t image/png";
     "${modifier}+grave" = scratchpadCmd "bc ${./.bc}";
     "${modifier}+Shift+grave" = scratchpadCmd "units";
+    "${modifier}+ctrl+l" = ''exec --no-startup-id "${pkgs.libnotify}/bin/notify-send 'Going to sleep'; sleep 1; ${pkgs.xorg.xset}/bin/xset dpms force off; ${locker}"'';
 
     # Extra utilities
     "${modifier}+m" = "exec i3-input -F 'mark %s' -l 1 -P 'Mark: '";
@@ -80,5 +85,6 @@ rec {
   ];
   startup = [
     { command = "i3-msg workspace 1"; notification = false; }
+    { command = "exec --no-startup-id xss-lock --transfer-sleep-lock -- ${locker}"; notification = false; }
   ];
 }
