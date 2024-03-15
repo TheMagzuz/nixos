@@ -53,5 +53,7 @@ cfg.nil_ls.setup({})
 cfg.texlab.setup({})
 cfg.omnisharp.setup({
   cmd = { "OmniSharp" },
-  enable_editorconfig_support = true,
+  -- enable_editorconfig_support = false,
+  enable_roslyn_analyzers = true,
+  enable_import_completion = true,
 })
