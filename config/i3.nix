@@ -1,6 +1,14 @@
 { pkgs, lib, ... }: 
 let
-    locker = "${pkgs.i3lock}/bin/i3lock --nofork"; 
+    locker = pkgs.writeShellScript "locker.sh" ''
+      revert() {
+        xset dpms 600 600 600
+      }
+      trap revert HUP INT TERM
+      xset +dpms dpms 5 5 5
+      "${pkgs.i3lock}/bin/i3lock" -n
+      revert
+    '';
 in rec {
   focus.wrapping = "workspace";
   focus.mouseWarping = true;
@@ -85,6 +93,6 @@ in rec {
   ];
   startup = [
     { command = "i3-msg workspace 1"; notification = false; }
-    { command = "exec --no-startup-id xss-lock --transfer-sleep-lock -- ${locker}"; notification = false; }
+    { command = "xss-lock --transfer-sleep-lock -- ${locker}"; notification = false; }
   ];
 }
