@@ -1,14 +1,17 @@
 { pkgs, lib, ... }: 
 let
+    xset = "${pkgs.xorg.xset}/bin/xset";
     locker = pkgs.writeShellScript "locker.sh" ''
       revert() {
-        xset dpms 600 600 600
+        "${xset}" dpms 600 600 600
       }
       trap revert HUP INT TERM
-      xset +dpms dpms 5 5 5
+      "${xset}" +dpms dpms 5 5 5
       "${pkgs.i3lock}/bin/i3lock" -n
       revert
     '';
+    browser = "${pkgs.librewolf}/bin/librewolf";
+    notify-send = "${pkgs.libnotify}/bin/notify-send";
 in rec {
   focus.wrapping = "workspace";
   focus.mouseWarping = true;
@@ -20,7 +23,7 @@ in rec {
   gaps.outer = 8;
   menu = "${pkgs.rofi}/bin/rofi -show drun";
   modifier = "Mod4";
-  terminal = "kitty";
+  terminal = "${pkgs.kitty}/bin/kitty";
   workspaceAutoBackAndForth = true;
   bars = [];
   window = {
@@ -62,12 +65,12 @@ in rec {
 
     # Opening stuff
     "${modifier}+p" = "exec ${menu}";
-    "${modifier}+b" = "exec librewolf";
-    "${modifier}+Shift+b" = "exec librewolf --private-window";
-    "${modifier}+Shift+s" = "exec --no-startup-id maim -s | xclip -selection clipboard -t image/png";
-    "${modifier}+grave" = scratchpadCmd "bc ${./.bc}";
-    "${modifier}+Shift+grave" = scratchpadCmd "units";
-    "${modifier}+ctrl+l" = ''exec --no-startup-id "${pkgs.libnotify}/bin/notify-send 'Going to sleep'; sleep 1; ${pkgs.xorg.xset}/bin/xset dpms force off; ${locker}"'';
+    "${modifier}+b" = "exec ${browser}";
+    "${modifier}+Shift+b" = "exec ${browser} --private-window";
+    "${modifier}+Shift+s" = "exec --no-startup-id '${pkgs.maim}/bin/maim' -s | '${pkgs.xclip}/bin/xclip' -selection clipboard -t image/png";
+    "${modifier}+grave" = scratchpadCmd "'${pkgs.bc}/bin/bc' ${./.bc}";
+    "${modifier}+Shift+grave" = scratchpadCmd "'${pkgs.units}/bin/units'";
+    "${modifier}+ctrl+l" = ''exec --no-startup-id "${notify-send} 'Going to sleep'; sleep 1; ${xset} dpms force off; ${locker}"'';
 
     # Extra utilities
     "${modifier}+m" = "exec i3-input -F 'mark %s' -l 1 -P 'Mark: '";
@@ -93,6 +96,6 @@ in rec {
   ];
   startup = [
     { command = "i3-msg workspace 1"; notification = false; }
-    { command = "xss-lock --transfer-sleep-lock -- ${locker}"; notification = false; }
+    { command = "'${pkgs.xss-lock}/bin/xss-lock' --transfer-sleep-lock -- ${locker}"; notification = false; }
   ];
 }
