@@ -7,7 +7,10 @@
     vimdiffAlias = true;
     withNodeJs = true;
     withPython3 = true;
-    plugins = with pkgs.vimPlugins; [
+    plugins = let
+        luaCfg = config: "lua << EOF\n" + config + "\nEOF";
+    in
+    with pkgs.vimPlugins; [
         telescope-nvim
         dracula-nvim
         nvim-treesitter.withAllGrammars
@@ -18,7 +21,7 @@
         # symbols in the gutter and git utilities
         {
           plugin = gitsigns-nvim;
-          config = "lua << EOF\n"+ lib.strings.fileContents ./luacfg/plugin/gitsigns.lua + "\nEOF";
+          config = luaCfg (lib.strings.fileContents ./luacfg/plugin/gitsigns.lua);
         }
 
         # comment lines with "gc"
@@ -41,6 +44,9 @@
         lsp-zero-nvim
         # lsp support
         nvim-lspconfig
+
+        # inline function call signature hints
+        lsp_signature-nvim
 
         # autocompletion
         nvim-cmp

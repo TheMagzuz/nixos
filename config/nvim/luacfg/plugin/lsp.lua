@@ -25,6 +25,7 @@ cmp.setup({
 })
 
 lsp.on_attach(function(client, bufnr)
+  require("lsp_signature").on_attach({}, bufnr)
   local opts = {buffer = bufnr, remap = false}
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
