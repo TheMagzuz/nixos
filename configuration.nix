@@ -44,6 +44,16 @@
     LC_TIME = "da_DK.UTF-8";
   };
 
+  # Automatically optimize nix store
+  nix.optimise.automatic = true;
+
+  # Automatically delete generations more than 30 days old every week
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   # Configure keymap in X11
   services.xserver = {
     layout = "eu";
