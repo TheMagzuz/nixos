@@ -49,6 +49,7 @@
       lf
       pdfgrep
       obsidian
+      fd
   ];
   programs.zsh = {
     enable = true;
@@ -107,6 +108,19 @@
       theme = "dracula";
       navigate = true;
     };
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.bat.enable = true;
+  programs.eza = {
+    enable = true;
+    enableAliases = true;
+    git = true;
+    icons = true;
   };
 
   # Setup i3wm
