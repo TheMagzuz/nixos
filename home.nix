@@ -50,6 +50,7 @@
       pdfgrep
       obsidian
       fd
+      python3
   ];
   programs.zsh = {
     enable = true;
