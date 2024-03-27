@@ -10,7 +10,7 @@
       flakecfg = "nvim ~/flake/flake.nix";
       nix-switch = "sudo nixos-rebuild switch --flake ~/flake#nixos";
       nix-test = "sudo nixos-rebuild test --flake ~/flake#nixos";
-      gaa="git add .";
+      gaa="git add -A";
       gc="git commit -m";
       gl="git log";
       gst="git status";
@@ -18,6 +18,11 @@
       gpl="git pull";
       gd="git diff";
       gap="git add -p";
+      gpu="git push --set-upstream origin HEAD";
+      gfl="git push --force-with-lease";
+      gam="git commit --amend --no-edit";
+      gsw="git switch";
+      gsc="git switch -c";
   };
 
   home.pointerCursor = {
