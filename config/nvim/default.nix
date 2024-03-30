@@ -8,67 +8,101 @@
     withNodeJs = true;
     withPython3 = true;
     plugins = let
-        luaCfg = config: "lua << EOF\n" + config + "\nEOF";
+        readFile = builtins.readFile;
+        pluginSetup = plugin: pluginName: { inherit plugin; type = "lua"; config = "require'${pluginName}'.setup()"; };
+        defaults = plugin: {
+            type = "lua";
+            config = if plugin ? configFile
+                then readFile plugin.configFile
+                else plugin.config or null;
+        };
     in
-    with pkgs.vimPlugins; [
-        telescope-nvim
-        dracula-nvim
+    with pkgs.vimPlugins; map (p: (defaults p) // builtins.removeAttrs p [ "configFile" ]) [
+
+        nvim-web-devicons
+
+        {
+            plugin = telescope-nvim;
+            configFile = ./luacfg/plugin/telescope.lua;
+        }
+
+        {
+            plugin = dracula-nvim;
+            type = "viml";
+            config = "colorscheme dracula";
+        }
+
         nvim-treesitter.withAllGrammars
+
         # git plugins
-        vim-fugitive
+        {
+            plugin = vim-fugitive;
+            config = "vim.keymap.set('n', '<leader>gs', vim.cmd.Git)";
+        }
+
         vim-rhubarb
 
         # symbols in the gutter and git utilities
         {
           plugin = gitsigns-nvim;
-          config = luaCfg (lib.strings.fileContents ./luacfg/plugin/gitsigns.lua);
+          configFile = ./luacfg/plugin/gitsigns.lua;
         }
 
         # comment lines with "gc"
-        comment-nvim
+        (pluginSetup comment-nvim "Comment")
 
         # detect tabstop and shiftwidth automatically
         vim-sleuth
 
         # status notifications
-        fidget-nvim
+        (pluginSetup fidget-nvim "fidget")
 
         # show pending keybinds
-        which-key-nvim
+        (pluginSetup which-key-nvim "which-key")
 
         vim-repeat
         vim-surround
 
-
-        # lsp-zero dependencies
-        lsp-zero-nvim
-        # lsp support
-        nvim-lspconfig
+        {
+            plugin = lsp-zero-nvim;
+            configFile = ./luacfg/plugin/lspzero.lua;
+        }
 
         # inline function call signature hints
         lsp_signature-nvim
 
-        # autocompletion
-        nvim-cmp
-        cmp-buffer
-        cmp-path
-        cmp_luasnip
-        cmp-nvim-lua
-        cmp-nvim-lsp
+        {
+            plugin = formatter-nvim;
+            configFile = ./luacfg/plugin/formatter.lua;
+        }
 
-        formatter-nvim
         luasnip
-        harpoon
-        neodev-nvim
-        trouble-nvim
-        nerdtree
-        vimtex
-    ];
-    extraLuaConfig = builtins.concatStringsSep "\n" ((map lib.strings.fileContents (import ./luacfg)) ++ [
+
+        {
+            plugin = harpoon;
+            configFile = ./luacfg/plugin/harpoon.lua;
+        }
+
+        {
+            plugin = trouble-nvim;
+            configFile = ./luacfg/plugin/trouble.lua;
+        }
+
+        {
+            plugin = neo-tree-nvim;
+            config = "vim.keymap.set('n', '<c-n>', ':Neotree<CR>')";
+        }
+
+        {
+            plugin = vimtex;
+            configFile = ./luacfg/plugin/vimtex.lua;
+        }
+    ] ++
+        import ./lsp.nix { inherit pkgs lib; };
+    extraLuaConfig = builtins.concatStringsSep "\n" ((map  builtins.readFile (import ./luacfg)) ++ [
 
     ]);
     extraPackages = with pkgs; [
-        rust-analyzer
         lua-language-server
         nil
         texlab
