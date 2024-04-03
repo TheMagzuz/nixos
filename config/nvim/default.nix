@@ -97,6 +97,9 @@
             plugin = vimtex;
             configFile = ./luacfg/plugin/vimtex.lua;
         }
+
+        # Sticky scope header
+        (pluginSetup nvim-treesitter-context "treesitter-context")
     ] ++
         import ./lsp.nix { inherit pkgs lib; };
     extraLuaConfig = builtins.concatStringsSep "\n" ((map  builtins.readFile (import ./luacfg)) ++ [
