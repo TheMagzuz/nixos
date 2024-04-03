@@ -62,4 +62,12 @@ with pkgs.vimPlugins; [
     cmp-nvim-lua
     cmp-nvim-lsp
 
+    # Debugger
+    {
+        plugin = nvim-dap;
+        type = "lua";
+        config = builtins.readFile ./luacfg/plugin/dap.lua;
+    }
+    nvim-dap-ui # UI for Debugger
+
 ]
