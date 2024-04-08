@@ -62,6 +62,7 @@
 
         vim-repeat
         vim-surround
+        vim-argumentative
 
         {
             plugin = lsp-zero-nvim;
