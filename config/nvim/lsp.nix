@@ -1,8 +1,10 @@
 { pkgs, lib, ... }:
 let
     lspPlugin = { name, cmd,  extraConfig ? "{}" }:
-        # TODO: Add the ability to pass cmd as an array
-        let setupArgs = "{ cmd = { '${cmd}' } }"; in ''
+        let
+        argsList = (if builtins.isList cmd then cmd else [cmd]);
+        argsStr = builtins.concatStringsSep ", " (map (arg: "'${arg}'") argsList);
+        setupArgs = "{ cmd = { ${argsStr} } }"; in ''
         do
             local setupArgs = ${setupArgs}
             local extraArgs = ${extraConfig}
@@ -41,6 +43,11 @@ with pkgs.vimPlugins; [
                         enable_import_completion = true,
                     }
                 '';
+            }
+
+            {
+                name = "hls";
+                cmd = ["haskell-language-server-wrapper" "--lsp"];
             }
         ]);
     }
