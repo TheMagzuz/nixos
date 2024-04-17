@@ -49,17 +49,15 @@
       units
       ripgrep
       pulseaudio
-      texlive.combined.scheme-full
       pandoc
       lf
-      pdfgrep
       obsidian
       fd
       python3
   ];
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     dotDir = ".config/zsh";
     syntaxHighlighting.enable = true;
   };
@@ -127,7 +125,6 @@
   programs.bat.enable = true;
   programs.eza = {
     enable = true;
-    enableAliases = true;
     git = true;
     icons = true;
   };

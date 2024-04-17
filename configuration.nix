@@ -54,11 +54,6 @@
     options = "--delete-older-than 30d";
   };
 
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "eu";
-    xkbVariant = "";
-  };
   # Make obsidian work
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
@@ -107,6 +102,12 @@
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
+
+    # Configure keymap in X11
+    xkb = {
+      layout = "eu";
+      variant = "";
+    };
   };
 
   # make dynamically linked binaries work without patching
