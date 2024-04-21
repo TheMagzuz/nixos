@@ -1,5 +1,8 @@
 { config, pkgs, lib, ... }:
 {
+  imports = [
+    ./modules/nh.nix
+  ];
   home.username = "markus";
   home.homeDirectory = "/home/markus";
   home.stateVersion = "23.11";
@@ -8,8 +11,10 @@
       nixcfg = "nvim ~/flake/configuration.nix";
       homecfg = "nvim ~/flake/home.nix";
       flakecfg = "nvim ~/flake/flake.nix";
-      nix-switch = "sudo nixos-rebuild switch --flake ~/flake#nixos";
-      nix-test = "sudo nixos-rebuild test --flake ~/flake#nixos";
+      nix-switch = "sudo nixos-rebuild switch --flake ~/flake#nixos -j8";
+      nix-test = "sudo nixos-rebuild test --flake ~/flake#nixos -j8";
+      nh-test = "nh os test -- -j8";
+      nh-switch = "nh os test -- -j8";
       gaa="git add -A";
       gc="git commit -m";
       gl="git log";
@@ -128,6 +133,8 @@
     git = true;
     icons = true;
   };
+
+  custom.nh.enable = true;
 
   # Setup i3wm
   xsession = {
