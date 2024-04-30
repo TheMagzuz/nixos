@@ -26,7 +26,7 @@ with pkgs.vimPlugins; [
 
             {
                 name = "nil_ls";
-                cmd = "${pkgs.nil}/bin/nil";
+                cmd = "nil";
             }
 
             {
