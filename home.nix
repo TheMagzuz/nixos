@@ -42,7 +42,10 @@
   };
   
   home.packages = with pkgs; [
-      discord
+      (pkgs.discord.override {
+        withVencord = true;
+        withOpenASAR = true;
+      })
       xss-lock
       unzip
       maim
