@@ -7,6 +7,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/man.nix
     ];
 
   
@@ -162,7 +163,7 @@
     sudo.fprintAuth = true;
   };
 
-  documentation.dev.enable = true;
+  custom.man.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
