@@ -162,6 +162,8 @@
     sudo.fprintAuth = true;
   };
 
+  documentation.dev.enable = true;
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
