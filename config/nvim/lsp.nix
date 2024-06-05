@@ -35,14 +35,14 @@ with pkgs.vimPlugins; [
             }
 
             {
-                name = "omnisharp";
-                cmd = "${pkgs.omnisharp-roslyn}/bin/OmniSharp";
-                extraConfig = ''
-                    {
-                        enable_roslyn_analyzers = true,
-                        enable_import_completion = true,
-                    }
-                '';
+                name = "csharp_ls";
+                cmd = "${pkgs.csharp-ls}/bin/csharp-ls";
+                # extraConfig = ''
+                #     {
+                #         enable_roslyn_analyzers = true,
+                #         enable_import_completion = true,
+                #     }
+                # '';
             }
 
             {
