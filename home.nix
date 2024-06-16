@@ -14,7 +14,7 @@
       nix-switch = "sudo nixos-rebuild switch --flake ~/flake#nixos -j8";
       nix-test = "sudo nixos-rebuild test --flake ~/flake#nixos -j8";
       nh-test = "nh os test -- -j8";
-      nh-switch = "nh os test -- -j8";
+      nh-switch = "nh os switch -- -j8";
       gaa="git add -A";
       gc="git commit -m";
       gl="git log";
