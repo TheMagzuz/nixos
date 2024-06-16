@@ -49,6 +49,11 @@ with pkgs.vimPlugins; [
                 name = "hls";
                 cmd = ["haskell-language-server-wrapper" "--lsp"];
             }
+
+            {
+                name = "denols";
+                cmd = [ "deno" "lsp" ];
+            }
         ]);
     }
 
