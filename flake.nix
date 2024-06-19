@@ -10,32 +10,32 @@
   };
 
   outputs = { self, nixpkgs, home-manager, flake-utils, ...}@inputs: {
-    nixosConfigurations = {
+    nixosConfigurations = let
+      commonModules = [
+        ./configuration.nix
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.markus = import ./home.nix;
+        }
+      ];
+      specialArgs = { };
+    in {
       "laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
           ./hosts/laptop/hardware-configuration.nix
-          ./configuration.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.markus = import ./home.nix;
-          }
-        ];
+        ] ++ commonModules;
+        inherit specialArgs;
       };
       "desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
           ./hosts/desktop/hardware-configuration.nix
-          ./configuration.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.markus = import ./home.nix;
-          }
-        ];
+        ] ++ commonModules;
+        inherit specialArgs;
       };
     };
   } // flake-utils.lib.eachDefaultSystem (system:
