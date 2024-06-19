@@ -97,7 +97,7 @@
 
   programs.rofi = {
     enable = true;
-    theme = "dracula";
+    theme = ./config/dracula.rasi;
     terminal = "kitty";
     extraConfig = {
       modes = "drun,run";
