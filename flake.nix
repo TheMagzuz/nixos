@@ -11,10 +11,24 @@
 
   outputs = { self, nixpkgs, home-manager, flake-utils, ...}@inputs: {
     nixosConfigurations = {
-      "nixos" = nixpkgs.lib.nixosSystem {
+      "laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
+          ./hosts/laptop/hardware-configuration.nix
+          ./configuration.nix
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.markus = import ./home.nix;
+          }
+        ];
+      };
+      "desktop" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        modules = [
+          ./hosts/desktop/hardware-configuration.nix
           ./configuration.nix
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
