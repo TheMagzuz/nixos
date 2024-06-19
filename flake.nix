@@ -13,11 +13,6 @@
     nixosConfigurations = let
       commonModules = [
         ./configuration.nix
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.markus = import ./home.nix;
-        }
       ];
       specialArgs = { };
     in {
@@ -26,6 +21,11 @@
 
         modules = [
           ./hosts/laptop/hardware-configuration.nix
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.markus = import ./hosts/laptop/home.nix;
+          }
         ] ++ commonModules;
         inherit specialArgs;
       };
@@ -34,6 +34,11 @@
 
         modules = [
           ./hosts/desktop/hardware-configuration.nix
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.markus = import ./hosts/desktop/home.nix;
+          }
         ] ++ commonModules;
         inherit specialArgs;
       };

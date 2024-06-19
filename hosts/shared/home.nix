@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ./modules/nh.nix
+    ../../modules/nh.nix
   ];
   home.username = "markus";
   home.homeDirectory = "/home/markus";
@@ -13,8 +13,6 @@
       flakecfg = "nvim ~/flake/flake.nix";
       nix-switch = "sudo nixos-rebuild switch --flake ~/flake#nixos -j8";
       nix-test = "sudo nixos-rebuild test --flake ~/flake#nixos -j8";
-      nh-test = "nh os test -- -j8";
-      nh-switch = "nh os switch -- -j8";
       gaa="git add -A";
       gc="git commit -m";
       gl="git log";
@@ -70,7 +68,7 @@
     syntaxHighlighting.enable = true;
   };
 
-  programs.neovim =  import ./config/nvim { inherit pkgs lib; };
+  programs.neovim =  import ../../config/nvim { inherit pkgs lib; };
 
   programs.starship = {
     enable = true;
@@ -97,7 +95,7 @@
 
   programs.rofi = {
     enable = true;
-    theme = ./config/dracula.rasi;
+    theme = ../../config/dracula.rasi;
     terminal = "kitty";
     extraConfig = {
       modes = "drun,run";
@@ -143,13 +141,13 @@
   xsession = {
     enable = true;
     windowManager.i3.enable = true;
-    windowManager.i3.config = import ./config/i3.nix { inherit pkgs lib; };
+    windowManager.i3.config = import ../../config/i3.nix { inherit pkgs lib; };
   };
 
 
   services.polybar = {
     enable = true;
-    settings = import ./config/polybar.nix;
+    settings = import ../../config/polybar.nix;
     script = "polybar top &";
     package = pkgs.polybar.override {
       pulseSupport = true;
