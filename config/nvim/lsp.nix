@@ -22,6 +22,26 @@ with pkgs.vimPlugins; [
             {
                 name = "rust_analyzer";
                 cmd = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+                extraConfig = ''
+                {
+                    settings = {
+                    ["rust-analyzer"] = {
+                        checkOnSave = {
+                          allFeatures = true,
+                          command = "clippy",
+                          extraArgs = {
+                            "--",
+                            "--no-deps",
+                            "-Dclippy::correctness",
+                            "-Dclippy::complexity",
+                            "-Wclippy::perf",
+                            "-Wclippy::pedantic",
+                          },
+                        },
+                    }
+                    },
+                }
+                '';
             }
 
             {
