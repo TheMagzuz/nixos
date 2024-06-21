@@ -68,7 +68,7 @@
     syntaxHighlighting.enable = true;
   };
 
-  programs.neovim =  import ../../config/nvim { inherit pkgs lib; };
+  programs.neovim =  import ./config/nvim { inherit pkgs lib; };
 
   programs.starship = {
     enable = true;
@@ -95,7 +95,7 @@
 
   programs.rofi = {
     enable = true;
-    theme = ../../config/dracula.rasi;
+    theme = ./config/dracula.rasi;
     terminal = "kitty";
     extraConfig = {
       modes = "drun,run";
@@ -141,18 +141,21 @@
   xsession = {
     enable = true;
     windowManager.i3.enable = true;
-    windowManager.i3.config = import ../../config/i3.nix { inherit pkgs lib; };
+    windowManager.i3.config = import ./config/i3.nix { inherit pkgs lib; };
   };
 
 
   services.polybar = {
     enable = true;
-    settings = import ../../config/polybar.nix;
+    settings = import ./config/polybar.nix;
     script = "polybar top &";
     package = pkgs.polybar.override {
       pulseSupport = true;
     };
   };
 
-  services.dunst.enable = true;
+  services.dunst = {
+    enable = true;
+    configFile = ./config/dunstrc;
+  };
 }
