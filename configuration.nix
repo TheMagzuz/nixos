@@ -110,6 +110,11 @@
     };
   };
 
+  services.libinput = {
+      enable = true;
+      mouse.accelProfile = "flat";
+  };
+
   # make dynamically linked binaries work without patching
   programs.nix-ld.enable = true;
 
