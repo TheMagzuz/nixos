@@ -41,8 +41,8 @@
   
   home.packages = with pkgs; [
       (pkgs.discord.override {
-        withVencord = true;
-        withOpenASAR = true;
+        # withVencord = true;
+        # withOpenASAR = true;
       })
       xss-lock
       unzip
