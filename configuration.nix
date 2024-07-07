@@ -7,6 +7,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./modules/man.nix
+      ./modules/sops.nix
+      ./modules/music.nix
     ];
 
   

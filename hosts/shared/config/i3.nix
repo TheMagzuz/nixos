@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: 
+{ pkgs, lib, ... }:
 let
     xset = "${pkgs.xorg.xset}/bin/xset";
     locker = pkgs.writeShellScript "locker.sh" ''
@@ -81,6 +81,10 @@ in rec {
     "XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 2%-";
     "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 2%+";
     "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle";
+
+    # Music control
+    "${modifier}+s" = scratchpadCmd "${pkgs.ncmpcpp}/bin/ncmpcpp";
+    "XF86AudioPlay" = "${pkgs.mpc-cli}/bin/mpc toggle";
 
     # Delete the default bindings that we don't care about
     "${modifier}+Shift+e" = null;

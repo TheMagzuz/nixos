@@ -13,7 +13,13 @@ in
       extensionPackages = with pkgs; [
         mopidy-mpd
         mopidy-subidy
+        mopidy-scrobbler
       ];
+      configuration = ''
+        [mpd]
+        enabled = true;
+      '';
+      extraConfigFiles = [ config.sops.templates."mopidy.conf".path ];
     };
 
   };
