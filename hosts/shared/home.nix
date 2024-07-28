@@ -60,6 +60,7 @@
       obsidian
       fd
       python3
+      zotero
   ];
   programs.zsh = {
     enable = true;
