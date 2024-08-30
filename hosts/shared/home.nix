@@ -26,6 +26,7 @@
       gam="git commit --amend --no-edit";
       gsw="git switch";
       gsc="git switch -c";
+      gia="git add -A --intent-to-add";
   };
 
   home.pointerCursor = {
