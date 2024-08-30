@@ -79,6 +79,9 @@
   programs.kitty = {
     enable = true;
     theme = "Dracula";
+    keybindings = {
+      "ctrl+shift+enter" = "new_os_window_with_cwd";
+    };
   };
 
   programs.git = {
