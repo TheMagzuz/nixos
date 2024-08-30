@@ -101,6 +101,8 @@
 
         # Sticky scope header
         (pluginSetup nvim-treesitter-context "treesitter-context")
+
+        emmet-vim
     ] ++
         import ./lsp.nix { inherit pkgs lib; };
     extraLuaConfig = builtins.concatStringsSep "\n" ((map  builtins.readFile (import ./luacfg)) ++ [
