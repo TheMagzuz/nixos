@@ -62,6 +62,7 @@
       fd
       python3
       zotero
+      libreoffice
   ];
   programs.zsh = {
     enable = true;
