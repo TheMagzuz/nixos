@@ -23,7 +23,7 @@
         system = "x86_64-linux";
 
         modules = [
-          ./hosts/laptop/hardware-configuration.nix
+          ./hosts/laptop/configuration.nix
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
