@@ -1,10 +1,10 @@
 { pkgs, lib, ... }:
 let
-    lspPlugin = { name, cmd,  extraConfig ? "{}" }:
+    lspPlugin = { name, cmd ? null,  extraConfig ? "{}" }:
         let
         argsList = (if builtins.isList cmd then cmd else [cmd]);
         argsStr = builtins.concatStringsSep ", " (map (arg: "'${arg}'") argsList);
-        setupArgs = "{ cmd = { ${argsStr} } }"; in ''
+        setupArgs = if cmd != null then "{ cmd = { ${argsStr} } }" else "{}"; in ''
         do
             local setupArgs = ${setupArgs}
             local extraArgs = ${extraConfig}
@@ -73,6 +73,10 @@ with pkgs.vimPlugins; [
             {
                 name = "denols";
                 cmd = [ "deno" "lsp" ];
+            }
+
+            {
+                name = "pyright";
             }
         ]);
     }
