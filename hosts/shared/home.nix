@@ -13,6 +13,7 @@
       flakecfg = "nvim ~/flake/flake.nix";
       nix-switch = "sudo nixos-rebuild switch --flake ~/flake#nixos -j8";
       nix-test = "sudo nixos-rebuild test --flake ~/flake#nixos -j8";
+      nix-init = "nix flake init --template templates\#utils-generic && direnv allow";
       gaa="git add -A";
       gc="git commit -m";
       gl="git log";
