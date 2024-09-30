@@ -63,7 +63,8 @@
       fd
       python3
       zotero
-      libreoffice
+      file
+      sxiv
   ];
   programs.zsh = {
     enable = true;
