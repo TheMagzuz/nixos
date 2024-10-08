@@ -1,7 +1,9 @@
 keys:
-  - &primary age19s7qgj5qswkrz5pdnez8fyzte4q00y66ne7uhde6l2hxyn82k5lsg5zh7h
+  - &lupus age19s7qgj5qswkrz5pdnez8fyzte4q00y66ne7uhde6l2hxyn82k5lsg5zh7h
+  - &vulpes age18478kf4czn6jqls9jwq9jyee757ka7k9e945y75t3nndu0cfv9eq7k55e9
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
-      - *primary
+      - *lupus
+      - *vulpes
