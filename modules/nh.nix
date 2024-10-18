@@ -19,15 +19,6 @@ in {
       default = true;
     };
     enableAliases = mkEnableOption "switch and test shell aliases";
-    aliasHostname = mkOption {
-      type = types.nullOr types.string;
-      default = config.networking.hostName;
-      description = ''
-        The hostname of the system configuration that should be switched to when using the nh-test and nh-switch aliases.
-
-        Null will use the hostname of the system.
-      '';
-    };
     package = mkPackageOption pkgs "nh" { };
   };
 
@@ -43,9 +34,9 @@ in {
       sessionVariables = mkIf (cfg.flake != null) {
         FLAKE = cfg.flake;
       };
-      shellAliases = let hostnameArg = toString (trivial.mapNullable (s: "-H ${s}") cfg.aliasHostname); in {
-        nh-test = "nh os test ${hostnameArg} -- -j8";
-        nh-switch = "nh os switch ${hostnameArg} -- -j8";
+      shellAliases = {
+        nh-test = "nh os test -- -j8 --cores 8";
+        nh-switch = "nh os switch -- -j8 --cores 8";
       };
     };
     programs.zsh.initExtra = mkIf cfg.enableZshIntegration ''
