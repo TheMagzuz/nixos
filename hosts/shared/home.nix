@@ -82,7 +82,7 @@
 
   programs.kitty = {
     enable = true;
-    theme = "Dracula";
+    themeFile = "Dracula";
     keybindings = {
       "ctrl+shift+enter" = "new_os_window_with_cwd";
     };
@@ -140,7 +140,7 @@
   programs.eza = {
     enable = true;
     git = true;
-    icons = true;
+    icons = "auto";
   };
 
   custom.nh.enable = true;
