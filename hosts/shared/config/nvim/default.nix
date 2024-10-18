@@ -26,11 +26,7 @@
             configFile = ./luacfg/plugin/telescope.lua;
         }
 
-        {
-            plugin = dracula-nvim;
-            type = "viml";
-            config = "colorscheme dracula";
-        }
+        dracula-nvim
 
         nvim-treesitter.withAllGrammars
 
@@ -106,8 +102,12 @@
     ] ++
         import ./lsp.nix { inherit pkgs lib; };
     extraLuaConfig = builtins.concatStringsSep "\n" ((map  builtins.readFile (import ./luacfg)) ++ [
-
     ]);
+
+    extraConfig = ''
+        colorscheme dracula
+    '';
+
     extraPackages = with pkgs; [
         lua-language-server
         nil
