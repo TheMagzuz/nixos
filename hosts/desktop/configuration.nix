@@ -7,4 +7,6 @@
     ../../modules/flatpak.nix
   ];
   custom.music.enable = true;
+
+  networking.hostName = "lupus";
 }

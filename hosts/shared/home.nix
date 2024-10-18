@@ -166,4 +166,8 @@
     enable = true;
     configFile = ./config/dunstrc;
   };
+
+  custom.nh = {
+    enableAliases = true;
+  };
 }

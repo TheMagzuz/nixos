@@ -19,7 +19,7 @@
       ];
       specialArgs = { };
     in {
-      "laptop" = nixpkgs.lib.nixosSystem {
+      "vulpes" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
@@ -35,7 +35,7 @@
         ] ++ commonModules;
         inherit specialArgs;
       };
-      "desktop" = nixpkgs.lib.nixosSystem {
+      "lupus" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
