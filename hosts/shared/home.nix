@@ -2,6 +2,7 @@
 {
   imports = [
     ../../modules/nh.nix
+    ../../modules/home/i3.nix
   ];
   home.username = "markus";
   home.homeDirectory = "/home/markus";
@@ -148,8 +149,6 @@
   # Setup i3wm
   xsession = {
     enable = true;
-    windowManager.i3.enable = true;
-    windowManager.i3.config = import ./config/i3.nix { inherit pkgs lib; };
   };
 
 
