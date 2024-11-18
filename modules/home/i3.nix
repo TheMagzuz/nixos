@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   services.betterlockscreen.enable = true;
-  services.screen-locker.xautolock.enable = true;
+  services.screen-locker.enable = true;
 
   xsession.windowManager.i3.enable = true;
   xsession.windowManager.i3.config = let
