@@ -27,7 +27,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.markus = import ./hosts/laptop/home.nix;
+            home-manager.users.magz = import ./hosts/laptop/home.nix;
             home-manager.sharedModules = [
                inputs.sops-nix.homeManagerModules.sops
             ];
@@ -43,7 +43,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.markus = import ./hosts/desktop/home.nix;
+            home-manager.users.magz = import ./hosts/desktop/home.nix;
             home-manager.sharedModules = [
                inputs.sops-nix.homeManagerModules.sops
             ];

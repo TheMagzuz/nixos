@@ -59,9 +59,9 @@
     "electron-25.9.0"
   ];
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.markus = {
+  users.users.magz = {
+    uid = 1000;
     isNormalUser = true;
-    description = "Markus Dam";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
     ];

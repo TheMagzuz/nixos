@@ -4,8 +4,8 @@
     ../../modules/nh.nix
     ../../modules/home/i3.nix
   ];
-  home.username = "markus";
-  home.homeDirectory = "/home/markus";
+  home.username = "magz";
+  home.homeDirectory = "/home/magz";
   home.stateVersion = "23.11";
 
   home.shellAliases = {
