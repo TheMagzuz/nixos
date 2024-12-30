@@ -6,6 +6,7 @@
 
   home.packages = with pkgs; [
     prismlauncher
+    bolt-launcher
   ];
 
   xsession.windowManager.i3.config.workspaceOutputAssign = (map (i: {
