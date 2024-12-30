@@ -155,7 +155,13 @@
   services.polybar = {
     enable = true;
     settings = import ./config/polybar.nix;
-    script = "polybar top &";
+    script = ''
+      PATH=$PATH:${lib.makeBinPath [ pkgs.coreutils ]}
+      polybar --list-monitors | while read -r line; do
+          m=$(echo "$line" | cut -d":" -f1)
+          MONITOR=$m polybar --reload top &
+      done
+    '';
     package = pkgs.polybar.override {
       pulseSupport = true;
     };

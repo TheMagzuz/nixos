@@ -29,9 +29,6 @@
       border = 1;
       titlebar = false;
     };
-    assigns = {
-      "2" = [{ class = "Discord"; }];
-    };
     keybindings = let
       scratchpadCmd = cmd: "exec ${terminal} --class 'scratchpad' -T '${cmd}' -o confirm_os_window_close=0 ${cmd}";
     in lib.mkOptionDefault {
@@ -89,6 +86,7 @@
       "${modifier}+Shift+e" = null;
       "${modifier}+Shift+c" = null;
     };
+    defaultWorkspace = "workspace number 1";
     window.commands = [
       {
         command = "floating enable, resize set 800 600";
