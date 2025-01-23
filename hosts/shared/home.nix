@@ -169,7 +169,15 @@
 
   services.dunst = {
     enable = true;
-    configFile = ./config/dunstrc;
+  };
+
+  # manually write the dunst config since it's a big annoying file that i don't feel like converting
+  # stolen from https://github.com/nix-community/home-manager/blob/7b9ece1bf3c8780cde9b975b28c2d9ccd7e9cdb9/modules/services/dunst.nix
+  xdg.configFile."dunst/dunstrc" = {
+    source = ./config/dunstrc;
+    onChange = ''
+      ${pkgs.procps}/bin/pkill -u "$USER" ''${VERBOSE+-e} dunst || true
+      '';
   };
 
   custom.nh = {
