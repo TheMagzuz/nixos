@@ -9,4 +9,9 @@
   services.tlp = {
     enable = true;
   };
+
+  programs.light = {
+    enable = true;
+    brightnessKeys.enable = true;
+  };
 }
