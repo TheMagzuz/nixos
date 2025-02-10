@@ -63,7 +63,7 @@
       "${modifier}+p" = "exec ${menu}";
       "${modifier}+b" = "exec ${browser}";
       "${modifier}+Shift+b" = "exec ${browser} --private-window";
-      "${modifier}+Shift+s" = "exec --no-startup-id '${pkgs.maim}/bin/maim' -s | '${pkgs.xclip}/bin/xclip' -selection clipboard -t image/png";
+      "${modifier}+Shift+s" = "exec --no-startup-id '${pkgs.maim}/bin/maim' -s -u | '${pkgs.xclip}/bin/xclip' -selection clipboard -t image/png";
       "${modifier}+grave" = scratchpadCmd "'${pkgs.bc}/bin/bc' ${bcrc}";
       "${modifier}+Shift+grave" = scratchpadCmd "'${pkgs.units}/bin/units'";
       "${modifier}+ctrl+l" = ''exec --no-startup-id "${notify-send} 'Going to sleep'; sleep 1; ${xset} dpms force off;'';
