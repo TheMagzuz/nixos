@@ -3,6 +3,7 @@
   imports = [
     ../../modules/nh.nix
     ../../modules/home/i3.nix
+    ../../modules/home/nvim
   ];
   home.username = "magz";
   home.homeDirectory = "/home/magz";
@@ -73,8 +74,6 @@
     dotDir = ".config/zsh";
     syntaxHighlighting.enable = true;
   };
-
-  programs.neovim =  import ./config/nvim { inherit pkgs lib; };
 
   programs.starship = {
     enable = true;
