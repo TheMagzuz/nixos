@@ -48,6 +48,10 @@
       ts.enable = true;
       lua.enable = true;
       haskell.enable = true;
+      python = {
+        enable = true;
+        lsp.server = "pyright";
+      };
     };
     autocomplete.nvim-cmp = {
       enable = true;
