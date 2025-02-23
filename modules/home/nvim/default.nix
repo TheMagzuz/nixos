@@ -68,4 +68,8 @@
       ];
     };
   };
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 }
