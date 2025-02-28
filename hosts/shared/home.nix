@@ -3,6 +3,7 @@
   imports = [
     ../../modules/nh.nix
     ../../modules/home/i3.nix
+    ../../modules/home/gpg.nix
     ../../modules/home/nvim
   ];
   home.username = "magz";
