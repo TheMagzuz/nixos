@@ -93,6 +93,9 @@
     enable = true;
     userName = "Markus Dam";
     userEmail = "markus.dam123@gmail.com";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   programs.librewolf = {
