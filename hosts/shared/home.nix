@@ -87,6 +87,10 @@
     keybindings = {
       "ctrl+shift+enter" = "new_os_window_with_cwd";
     };
+    font = {
+      name = "FiraCode Nerd Font Mono";
+      size = 14;
+    };
   };
 
   programs.git = {
