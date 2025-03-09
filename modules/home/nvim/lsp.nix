@@ -52,12 +52,18 @@
         enable = true;
         lsp.server = "pyright";
       };
+      html.enable = true;
     };
     autocomplete.nvim-cmp = {
       enable = true;
       mappings = {
         next = "<c-n>";
         previous = "<c-p>";
+      };
+    };
+    extraPlugins = {
+      emmet-vim = {
+        package = pkgs.vimPlugins.emmet-vim;
       };
     };
   };
