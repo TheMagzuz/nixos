@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../../modules/nh.nix
     ../../modules/home/i3.nix
@@ -11,26 +15,26 @@
   home.stateVersion = "23.11";
 
   home.shellAliases = {
-      nixcfg = "nvim ~/flake/configuration.nix";
-      homecfg = "nvim ~/flake/home.nix";
-      flakecfg = "nvim ~/flake/flake.nix";
-      nix-switch = "sudo nixos-rebuild switch --flake ~/flake#nixos -j8";
-      nix-test = "sudo nixos-rebuild test --flake ~/flake#nixos -j8";
-      nix-init = "nix flake init --template templates\#utils-generic && direnv allow";
-      gaa="git add -A";
-      gc="git commit -m";
-      gl="git log";
-      gst="git status";
-      gps="git push";
-      gpl="git pull";
-      gd="git diff";
-      gap="git add -p";
-      gpu="git push --set-upstream origin HEAD";
-      gfl="git push --force-with-lease";
-      gam="git commit --amend --no-edit";
-      gsw="git switch";
-      gsc="git switch -c";
-      gia="git add -A --intent-to-add";
+    nixcfg = "nvim ~/flake/configuration.nix";
+    homecfg = "nvim ~/flake/home.nix";
+    flakecfg = "nvim ~/flake/flake.nix";
+    nix-switch = "sudo nixos-rebuild switch --flake ~/flake#nixos -j8";
+    nix-test = "sudo nixos-rebuild test --flake ~/flake#nixos -j8";
+    nix-init = "nix flake init --template templates\#utils-generic && direnv allow";
+    gaa = "git add -A";
+    gc = "git commit -m";
+    gl = "git log";
+    gst = "git status";
+    gps = "git push";
+    gpl = "git pull";
+    gd = "git diff";
+    gap = "git add -p";
+    gpu = "git push --set-upstream origin HEAD";
+    gfl = "git push --force-with-lease";
+    gam = "git commit --amend --no-edit";
+    gsw = "git switch";
+    gsc = "git switch -c";
+    gia = "git add -A --intent-to-add";
   };
 
   home.pointerCursor = {
@@ -43,31 +47,31 @@
   gtk = {
     enable = true;
   };
-  
+
   home.packages = with pkgs; [
-      (pkgs.discord.override {
-        withVencord = true;
-        withOpenASAR = true;
-      })
-      xss-lock
-      unzip
-      maim
-      xclip
-      arandr
-      pulsemixer
-      zathura
-      bc
-      units
-      ripgrep
-      pulseaudio
-      pandoc
-      lf
-      obsidian
-      fd
-      python3
-      zotero
-      file
-      sxiv
+    (pkgs.discord.override {
+      withVencord = true;
+      withOpenASAR = true;
+    })
+    xss-lock
+    unzip
+    maim
+    xclip
+    arandr
+    pulsemixer
+    zathura
+    bc
+    units
+    ripgrep
+    pulseaudio
+    pandoc
+    lf
+    obsidian
+    fd
+    python3
+    zotero
+    file
+    sxiv
   ];
   programs.zsh = {
     enable = true;
@@ -95,11 +99,19 @@
 
   programs.git = {
     enable = true;
-    userName = "Markus Dam";
-    userEmail = "markus.dam123@gmail.com";
+    userName = "magz";
+    userEmail = "magz@noreply.codeberg.org";
     extraConfig = {
       init.defaultBranch = "main";
     };
+    includes = [
+      {
+        condition = "hasconfig:remote.*.url:https://github.com/**";
+        contents = {
+          user.email = "11150183+TheMagzuz@users.noreply.github.com";
+        };
+      }
+    ];
   };
 
   programs.librewolf = {
@@ -158,12 +170,11 @@
     enable = true;
   };
 
-
   services.polybar = {
     enable = true;
     settings = import ./config/polybar.nix;
     script = ''
-      PATH=$PATH:${lib.makeBinPath [ pkgs.coreutils ]}
+      PATH=$PATH:${lib.makeBinPath [pkgs.coreutils]}
       polybar --list-monitors | while read -r line; do
           m=$(echo "$line" | cut -d":" -f1)
           MONITOR=$m polybar --reload top &
@@ -184,7 +195,7 @@
     source = ./config/dunstrc;
     onChange = ''
       ${pkgs.procps}/bin/pkill -u "$USER" ''${VERBOSE+-e} dunst || true
-      '';
+    '';
   };
 
   custom.nh = {
