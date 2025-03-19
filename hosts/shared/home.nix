@@ -72,6 +72,7 @@
     zotero
     file
     sxiv
+    codeberg-cli
   ];
   programs.zsh = {
     enable = true;
