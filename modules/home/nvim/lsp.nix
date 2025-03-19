@@ -48,6 +48,7 @@
       ts.enable = true;
       lua.enable = true;
       haskell.enable = true;
+      assembly.enable = true;
       python = {
         enable = true;
         lsp.server = "pyright";
