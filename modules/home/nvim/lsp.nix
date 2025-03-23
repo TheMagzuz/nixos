@@ -49,6 +49,10 @@
       lua.enable = true;
       haskell.enable = true;
       assembly.enable = true;
+      csharp = {
+        enable = true;
+        lsp.server = "omnisharp";
+      };
       python = {
         enable = true;
         lsp.server = "pyright";
