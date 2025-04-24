@@ -10,6 +10,7 @@
     ./surround.nix
     ./lsp.nix
     ./mini.nix
+    ./octo.nix
   ];
   programs.nvf = {
     enable = true;
