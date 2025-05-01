@@ -1,9 +1,11 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }: {
   programs.nvf.settings.vim = {
+    treesitter.grammars = builtins.filter lib.isDerivation (builtins.map (x: x.value) (lib.attrsToList pkgs.vimPlugins.nvim-treesitter.builtGrammars));
     lsp = {
       enable = true;
       lspconfig = {
