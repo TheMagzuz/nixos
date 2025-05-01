@@ -53,7 +53,7 @@
       assembly.enable = true;
       csharp = {
         enable = true;
-        lsp.server = "omnisharp";
+        lsp.enable = false;
       };
       python = {
         enable = true;
@@ -71,6 +71,32 @@
     extraPlugins = {
       emmet-vim = {
         package = pkgs.vimPlugins.emmet-vim;
+      };
+
+      roslyn-nvim = {
+        package = pkgs.vimPlugins.roslyn-nvim.overrideAttrs {
+          version = "2025-04-25";
+          src = pkgs.fetchFromGitHub {
+            owner = "seblyng";
+            repo = "roslyn.nvim";
+            rev = "353bc0f30076b82d027a554229995f1e0fa1c5e1";
+            hash = "sha256-BCjmt1XjfTeSNWWwnxStMFRpZUTlT+b9tuTUATRuzT0=";
+          };
+        };
+        setup = ''
+          require("roslyn").setup({
+              config = {
+                  cmd = {
+                      "${pkgs.dotnetCorePackages.runtime_9_0}/bin/dotnet",
+                      "${pkgs.roslyn-ls}/lib/roslyn-ls/Microsoft.CodeAnalysis.LanguageServer.dll",
+                      "--logLevel=Information",
+                      "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+                      "--stdio",
+                  },
+                  on_attach = default_on_attach,
+              },
+          })
+        '';
       };
     };
   };
