@@ -24,7 +24,6 @@
       trouble.enable = true;
     };
     languages = {
-      enableLSP = true;
       enableTreesitter = true;
       enableFormat = true;
       nix = {
