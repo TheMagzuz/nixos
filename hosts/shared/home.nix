@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ../../modules/nh.nix
     ../../modules/home/i3.nix
     ../../modules/home/gpg.nix
     ../../modules/home/nvim
@@ -35,6 +34,8 @@
     gsw = "git switch";
     gsc = "git switch -c";
     gia = "git add -A --intent-to-add";
+    nh-test = "nh os test -- -j8 --cores 8";
+    nh-switch = "nh os switch -- -j8 --cores 8";
   };
 
   home.pointerCursor = {
@@ -164,7 +165,10 @@
     icons = "auto";
   };
 
-  custom.nh.enable = true;
+  programs.nh = {
+    enable = true;
+    flake = config.home.homeDirectory + "/flake";
+  };
 
   # Setup i3wm
   xsession = {
@@ -197,9 +201,5 @@
     onChange = ''
       ${pkgs.procps}/bin/pkill -u "$USER" ''${VERBOSE+-e} dunst || true
     '';
-  };
-
-  custom.nh = {
-    enableAliases = true;
   };
 }
