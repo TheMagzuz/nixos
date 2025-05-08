@@ -7,6 +7,7 @@
   imports = [
     ../../modules/home/i3.nix
     ../../modules/home/gpg.nix
+    ../../modules/home/yazi.nix
     ../../modules/home/nvim
   ];
   home.username = "magz";
@@ -66,7 +67,6 @@
     ripgrep
     pulseaudio
     pandoc
-    lf
     obsidian
     fd
     python3
@@ -81,6 +81,8 @@
     dotDir = ".config/zsh";
     syntaxHighlighting.enable = true;
   };
+
+  home.shell.enableZshIntegration = true;
 
   programs.starship = {
     enable = true;
