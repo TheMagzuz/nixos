@@ -48,7 +48,10 @@
           };
         };
       };
-      useSystemClipboard = true;
+      clipboard = {
+        enable = true;
+        registers = "unnamedplus";
+      };
       git.enable = true;
       binds.whichKey.enable = true;
       visuals.fidget-nvim.enable = true;
