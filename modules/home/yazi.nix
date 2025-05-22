@@ -12,6 +12,27 @@
       dracula = "${flavor-repo}/dracula.yazi";
     };
     theme.flavor.dark = "dracula";
+    plugins = {
+      inherit
+        (pkgs.yaziPlugins)
+        smart-enter
+        jump-to-char
+        ;
+    };
+    keymap = {
+      manager.prepend_keymap = [
+        {
+          on = ["f"];
+          run = "plugin jump-to-char";
+          desc = "Jump to char";
+        }
+        {
+          on = ["l"];
+          run = "plugin smart-enter";
+          desc = "Enter the child directory, or open the file";
+        }
+      ];
+    };
   };
 
   home.shellAliases = {
