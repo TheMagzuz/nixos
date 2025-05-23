@@ -97,6 +97,13 @@
           })
         '';
       };
+
+      lean-nvim = {
+        package = pkgs.vimPlugins.lean-nvim;
+        setup = ''
+          require('lean').setup{ mappings = true }
+        '';
+      };
     };
   };
 }
