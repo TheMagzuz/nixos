@@ -34,8 +34,4 @@
       ];
     };
   };
-
-  home.shellAliases = {
-    "yy" = "yazi";
-  };
 }
