@@ -31,6 +31,21 @@
           run = "plugin smart-enter";
           desc = "Enter the child directory, or open the file";
         }
+        {
+          on = ["d"];
+          run = "yank --cut";
+          desc = "Yank selected files (cut)";
+        }
+        {
+          on = ["u"];
+          run = "unyank";
+          desc = "Cancel the yank status";
+        }
+        {
+          on = ["D"];
+          run = "Remove";
+          desc = "Trash selected files";
+        }
       ];
     };
   };
