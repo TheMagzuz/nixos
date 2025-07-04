@@ -11,6 +11,7 @@
     ./lsp.nix
     ./mini.nix
     ./octo.nix
+    ./flash.nix
   ];
   programs.nvf = {
     enable = true;
