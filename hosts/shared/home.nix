@@ -51,10 +51,11 @@
   };
 
   home.packages = with pkgs; [
-    (pkgs.discord.override {
-      withVencord = true;
-      withOpenASAR = true;
-    })
+    # (pkgs.discord.override {
+    # withVencord = true;
+    #   withOpenASAR = true;
+    # })
+    vesktop
     xss-lock
     unzip
     maim
