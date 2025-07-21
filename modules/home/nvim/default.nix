@@ -12,6 +12,7 @@
     ./mini.nix
     ./octo.nix
     ./flash.nix
+    ./rainbow-delimiters.nix
   ];
   programs.nvf = {
     enable = true;
