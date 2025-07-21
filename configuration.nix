@@ -1,22 +1,23 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./modules/man.nix
-      ./modules/sops.nix
-      ./modules/music.nix
-    ];
-
-  
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./modules/man.nix
+    ./modules/sops.nix
+    ./modules/music.nix
+    ./modules/nix-config.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-    
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -62,25 +63,25 @@
   users.users.magz = {
     uid = 1000;
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = ["networkmanager" "wheel" "libvirtd"];
     packages = with pkgs; [
     ];
   };
   programs.zsh.enable = true;
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
   users.defaultUserShell = pkgs.zsh;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # Enable experimental features that aren't really experimental
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     git
-     libnotify
+    git
+    libnotify
   ];
 
   fonts = {
@@ -91,7 +92,7 @@
     ];
     fontconfig = {
       defaultFonts = {
-        monospace = [ "FiraCode Nerd Font Mono" ];
+        monospace = ["FiraCode Nerd Font Mono"];
       };
     };
   };
@@ -113,8 +114,8 @@
   };
 
   services.libinput = {
-      enable = true;
-      mouse.accelProfile = "flat";
+    enable = true;
+    mouse.accelProfile = "flat";
   };
 
   # make dynamically linked binaries work without patching
@@ -184,5 +185,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
