@@ -3,7 +3,7 @@
 
   nixConfig = {
     extra-substituters = [
-      "nvf.cachix.org"
+      "https://nvf.cachix.org"
     ];
     extra-trusted-public-keys = ["nvf.cachix.org-1:GMQWiUhZ6ux9D5CvFFMwnc2nFrUHTeGaXRlVBXo+naI="];
   };
