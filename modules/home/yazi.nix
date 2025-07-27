@@ -20,7 +20,7 @@
         ;
     };
     keymap = {
-      manager.prepend_keymap = [
+      mgr.prepend_keymap = [
         {
           on = ["f"];
           run = "plugin jump-to-char";
@@ -43,7 +43,7 @@
         }
         {
           on = ["D"];
-          run = "Remove";
+          run = "remove";
           desc = "Trash selected files";
         }
       ];
