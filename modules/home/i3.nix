@@ -71,7 +71,7 @@
         "${modifier}+Shift+b" = "exec ${browser} --private-window";
         "${modifier}+Shift+s" = "exec --no-startup-id '${pkgs.maim}/bin/maim' -s -u | '${pkgs.xclip}/bin/xclip' -selection clipboard -t image/png";
         "${modifier}+grave" = scratchpadCmd "'${pkgs.bc}/bin/bc' ${bcrc}";
-        "${modifier}+Shift+grave" = scratchpadCmd "'${pkgs.units}/bin/units'";
+        "${modifier}+Shift+grave" = scratchpadCmd "'${lib.getExe pkgs.numbat}' --intro-banner off";
         "${modifier}+ctrl+l" = ''exec --no-startup-id "${notify-send} 'Going to sleep'; sleep 1; ${pkgs.lightdm}/bin/dm-tool lock;'';
         #  ${config.services.screen-locker.lockCmd}"
         # Extra utilities
