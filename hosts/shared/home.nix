@@ -75,6 +75,7 @@
     file
     sxiv
     codeberg-cli
+    bacon
   ];
   programs.zsh = {
     enable = true;
