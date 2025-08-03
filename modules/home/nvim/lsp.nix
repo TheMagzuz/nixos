@@ -59,6 +59,7 @@
         lsp.server = "pyright";
       };
       html.enable = true;
+      typst.enable = true;
     };
     autocomplete.nvim-cmp = {
       enable = true;
