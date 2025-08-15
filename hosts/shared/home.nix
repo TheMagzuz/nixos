@@ -80,7 +80,7 @@
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     syntaxHighlighting.enable = true;
   };
 
