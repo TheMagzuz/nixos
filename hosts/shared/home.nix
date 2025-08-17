@@ -101,6 +101,9 @@
       name = "FiraCode Nerd Font Mono";
       size = 14;
     };
+    settings = {
+      enable_audio_bell = false;
+    };
   };
 
   programs.git = {
