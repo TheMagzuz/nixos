@@ -60,6 +60,7 @@
       };
       html.enable = true;
       typst.enable = true;
+      nu.enable = true;
     };
     autocomplete.nvim-cmp = {
       enable = true;
