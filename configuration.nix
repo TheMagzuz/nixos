@@ -64,11 +64,10 @@
     uid = 1000;
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel" "libvirtd"];
-    packages = with pkgs; [
-    ];
+    shell = pkgs.nushell;
   };
   programs.zsh.enable = true;
-  environment.shells = with pkgs; [zsh];
+  environment.shells = with pkgs; [zsh nushell];
   users.defaultUserShell = pkgs.zsh;
 
   # Allow unfree packages

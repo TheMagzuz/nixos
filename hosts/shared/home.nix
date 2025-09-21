@@ -9,6 +9,7 @@
     ../../modules/home/gpg.nix
     ../../modules/home/yazi.nix
     ../../modules/home/nvim
+    ../../modules/home/nushell.nix
   ];
   home.username = "magz";
   home.homeDirectory = "/home/magz";
@@ -20,7 +21,6 @@
     flakecfg = "nvim ~/flake/flake.nix";
     nix-switch = "sudo nixos-rebuild switch --flake ~/flake#nixos -j8";
     nix-test = "sudo nixos-rebuild test --flake ~/flake#nixos -j8";
-    nix-init = "nix flake init --template templates\#utils-generic && direnv allow";
     gaa = "git add -A";
     gc = "git commit -m";
     gl = "git log";
@@ -86,11 +86,7 @@
 
   home.shell.enableZshIntegration = true;
 
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
+  programs.starship.enable = true;
   programs.kitty = {
     enable = true;
     themeFile = "Dracula";
@@ -159,7 +155,6 @@
 
   programs.zoxide = {
     enable = true;
-    enableZshIntegration = true;
     options = [
       "--cmd cd"
     ];

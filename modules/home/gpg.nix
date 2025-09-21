@@ -10,7 +10,7 @@
 
   services.gpg-agent = {
     enable = true;
-    enableZshIntegration = true;
+    enableNushellIntegration = true;
     pinentry.package = pkgs.pinentry-gnome3;
   };
   # required for pinentry-gnome3
