@@ -11,9 +11,12 @@
       edit_mode = "vi";
       show_banner = false;
     };
+    shellAliases = {
+      "fg" = "job unfreeze";
+    };
     extraConfig = ''
       def nix-init [] {
-        nix flake init --template templates\#utils-generic
+        nix flake init --template templates#utils-generic
         direnv allow
       }
     '';
