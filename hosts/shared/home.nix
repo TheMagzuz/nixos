@@ -76,6 +76,7 @@
     sxiv
     codeberg-cli
     bacon
+    feishin
   ];
   programs.zsh = {
     enable = true;
