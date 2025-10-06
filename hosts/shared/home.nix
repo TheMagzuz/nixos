@@ -77,6 +77,7 @@
     codeberg-cli
     bacon
     feishin
+    btop
   ];
   programs.zsh = {
     enable = true;
