@@ -106,9 +106,11 @@
 
   programs.git = {
     enable = true;
-    userName = "magz";
-    userEmail = "magz@noreply.codeberg.org";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "magz";
+        email = "magz@noreply.codeberg.org";
+      };
       init.defaultBranch = "main";
     };
     includes = [
@@ -146,7 +148,7 @@
 
   programs.gh.enable = true;
   programs.tmux.enable = true;
-  programs.git.delta = {
+  programs.delta = {
     enable = true;
     options = {
       line-numbers = true;
