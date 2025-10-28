@@ -61,6 +61,7 @@
       html.enable = true;
       typst.enable = true;
       nu.enable = true;
+      java.enable = true;
     };
     autocomplete.nvim-cmp = {
       enable = true;
