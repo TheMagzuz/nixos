@@ -21,4 +21,7 @@
       }
     '';
   };
+
+  # enable carapace for shell completions
+  programs.carapace.enable = true;
 }
