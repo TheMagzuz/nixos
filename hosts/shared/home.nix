@@ -58,7 +58,7 @@
     vesktop
     xss-lock
     unzip
-    maim
+    scrot
     xclip
     arandr
     pulsemixer
