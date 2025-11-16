@@ -76,7 +76,8 @@
     sxiv
     codeberg-cli
     bacon
-    feishin
+    # feishins version of electron is currently marked as insecure
+    # feishin
     btop
   ];
   programs.zsh = {
