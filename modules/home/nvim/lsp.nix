@@ -8,9 +8,6 @@
     treesitter.grammars = builtins.filter lib.isDerivation (builtins.map (x: x.value) (lib.attrsToList pkgs.vimPlugins.nvim-treesitter.builtGrammars));
     lsp = {
       enable = true;
-      lspconfig = {
-        enable = true;
-      };
       formatOnSave = true;
       mappings = {
         goToDefinition = "gd";
