@@ -18,6 +18,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     nvf.url = "github:notashelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
+    musnix.url = "github:musnix/musnix";
   };
 
   outputs = {
@@ -65,6 +66,7 @@
           modules =
             [
               ./hosts/desktop/configuration.nix
+              inputs.musnix.nixosModules.musnix
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;
