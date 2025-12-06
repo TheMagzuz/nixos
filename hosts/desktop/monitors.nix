@@ -1,6 +1,21 @@
-{ ... }@inputs:
-{
-  services.xserver.displayManager.sessionCommands = ''
-    xrandr --output DP-0 --primary --mode 1920x1080 --rate 144 --output HDMI-0 --mode 1920x1080 --left-of DP-0
-  '';
+{...} @ inputs: {
+  services.autorandr = {
+    enable = true;
+    profiles = {
+      "single" = {
+        fingerprint = {
+          DP-0 = "00ffffffffffff003669a63fef000000111d0104a53c22783b0cc5af4f40ab25145054bfcf00814081809500714f81c0b30001010101023a801871382d40582c450056502100001e0882805070384d400820f80c56502100001a000000fd003090b4b422010a202020202020000000fc004d5349204d4147323731430a20014e020320f14d010304131f120211900e0f1d1e230907078301000065030c001000fe5b80a0703835403020350056502100001a866f80a0703840403020350056502100001a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000075";
+        };
+        config = {
+          DP-0 = {
+            enable = true;
+            primary = true;
+            position = "0x0";
+            mode = "1920x1080";
+            rate = "143.85";
+          };
+        };
+      };
+    };
+  };
 }
