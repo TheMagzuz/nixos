@@ -143,7 +143,8 @@
   # services.openssh.enable = true;
 
   # Allow firmware updates
-  services.fwupd.enable = true;
+  # as of 2025-12-28, fwupd crashes on startup, so it's disabled for now
+  # services.fwupd.enable = true;
 
   security.rtkit.enable = true;
   services.pipewire = {

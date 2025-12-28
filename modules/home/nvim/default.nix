@@ -13,6 +13,7 @@
     ./octo.nix
     ./flash.nix
     ./rainbow-delimiters.nix
+    ./snippets
   ];
   programs.nvf = {
     enable = true;
