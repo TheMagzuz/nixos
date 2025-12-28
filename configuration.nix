@@ -12,6 +12,7 @@
     ./modules/sops.nix
     ./modules/music.nix
     ./modules/nix-config.nix
+    ./modules/keyring.nix
   ];
 
   # Bootloader.

@@ -10,6 +10,7 @@
     ../../modules/home/yazi.nix
     ../../modules/home/nvim
     ../../modules/home/nushell.nix
+    ../../modules/home/gtk.nix
   ];
   home.username = "magz";
   home.homeDirectory = "/home/magz";
