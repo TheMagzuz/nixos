@@ -4,6 +4,7 @@
     enable = true;
     plugins = with pkgs.nushellPlugins; [
       query
+      highlight
     ];
     settings = {
       buffer_editor = "nvim";

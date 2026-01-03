@@ -160,6 +160,10 @@
   # Enable fingerprint scanner
   services.fprintd.enable = true;
 
+  # enable virtualization
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
   programs.steam.enable = true;
 
   security.pam.services = {
