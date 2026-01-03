@@ -52,11 +52,11 @@
   };
 
   home.packages = with pkgs; [
-    # (pkgs.discord.override {
-    # withVencord = true;
-    #   withOpenASAR = true;
-    # })
-    vesktop
+    (pkgs.discord.override {
+      withVencord = true;
+      withOpenASAR = true;
+    })
+    # vesktop
     xss-lock
     unzip
     scrot
