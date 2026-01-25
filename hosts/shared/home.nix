@@ -80,6 +80,7 @@
     # feishins version of electron is currently marked as insecure
     # feishin
     btop
+    typst
   ];
   programs.zsh = {
     enable = true;
