@@ -19,6 +19,12 @@
       lightbulb.enable = true;
       otter-nvim.enable = true;
       trouble.enable = true;
+      servers.nixd.init_options = let
+        flake = ''(builtins.getFlake "${inputs.self}")'';
+      in {
+        nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
+        nixos.expr = "${flake}.nixosConfigurations.vulpes.options";
+      };
     };
     languages = {
       enableTreesitter = true;
@@ -26,13 +32,7 @@
       nix = {
         enable = true;
         lsp = {
-          server = "nixd";
-          options = let
-            flake = ''(builtins.getFlake "${inputs.self}")'';
-          in {
-            nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
-            nixos.expr = "${flake}.nixosConfigurations.vulpes.options";
-          };
+          servers = ["nixd"];
         };
         extraDiagnostics = {
           enable = true;
@@ -41,7 +41,7 @@
       };
       rust = {
         enable = true;
-        crates.enable = true;
+        extensions.crates-nvim.enable = true;
       };
       ts.enable = true;
       lua.enable = true;
@@ -53,7 +53,7 @@
       };
       python = {
         enable = true;
-        lsp.server = "pyright";
+        lsp.servers = ["pyright"];
       };
       html.enable = true;
       typst.enable = true;
