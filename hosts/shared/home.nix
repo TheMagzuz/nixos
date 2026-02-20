@@ -11,6 +11,7 @@
     ../../modules/home/nvim
     ../../modules/home/nushell.nix
     ../../modules/home/gtk.nix
+    ../../modules/home/gc.nix
   ];
   home.username = "magz";
   home.homeDirectory = "/home/magz";
