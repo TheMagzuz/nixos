@@ -82,6 +82,7 @@
     # feishin
     btop
     typst
+    thunderbird
   ];
   programs.zsh = {
     enable = true;
