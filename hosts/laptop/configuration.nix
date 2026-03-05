@@ -1,5 +1,4 @@
-{ ... }@inputs:
-{
+{...} @ inputs: {
   imports = [
     ./gpu.nix
     ./hardware-configuration.nix
@@ -10,8 +9,5 @@
     enable = true;
   };
 
-  programs.light = {
-    enable = true;
-    brightnessKeys.enable = true;
-  };
+  hardware.acpilight.enable = true;
 }

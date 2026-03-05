@@ -3,5 +3,5 @@
     enable = true;
     enable32Bit = true;
   };
-  services.xserver.videoDrivers = ["amd"];
+  services.xserver.videoDrivers = ["amdgpu"];
 }

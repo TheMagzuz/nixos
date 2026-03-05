@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   programs.yazi = {
     enable = true;
+    shellWrapperName = "yy";
     flavors = let
       flavor-repo = pkgs.fetchFromGitHub {
         owner = "yazi-rs";
