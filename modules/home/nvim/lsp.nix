@@ -5,7 +5,7 @@
   ...
 }: {
   programs.nvf.settings.vim = {
-    treesitter.grammars = builtins.filter lib.isDerivation (builtins.map (x: x.value) (lib.attrsToList pkgs.vimPlugins.nvim-treesitter.builtGrammars));
+    treesitter.grammars = builtins.filter lib.isDerivation (map (x: x.value) (lib.attrsToList pkgs.vimPlugins.nvim-treesitter.builtGrammars));
     lsp = {
       enable = true;
       formatOnSave = true;
