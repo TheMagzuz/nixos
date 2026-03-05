@@ -42,6 +42,12 @@
       rust = {
         enable = true;
         extensions.crates-nvim.enable = true;
+        lsp.opts = ''
+          ['rust-analyzer'] = {
+            cargo = {allFeatures = true},
+            check = {command = "clippy"},
+          },
+        '';
       };
       ts.enable = true;
       lua.enable = true;
