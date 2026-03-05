@@ -18,6 +18,10 @@
         nix flake init --template templates#utils-generic
         direnv allow
       }
+
+      def root-sizes [] {
+        ^find /nix/var/nix/gcroots/ -type l -readable | xargs nix path-info -S | detect columns --no-headers | rename path size | update size {into filesize} | sort-by size
+      }
     '';
   };
 

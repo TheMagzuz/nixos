@@ -1,4 +1,4 @@
-{...} @ inputs: {
+_: {
   imports = [
     ./gpu.nix
     ./hardware-configuration.nix
@@ -10,4 +10,5 @@
   };
 
   hardware.acpilight.enable = true;
+  users.users."magz".extraGroups = ["video"];
 }
