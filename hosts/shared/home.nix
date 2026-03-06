@@ -83,6 +83,7 @@
     btop
     typst
     thunderbird
+    dust
   ];
   programs.zsh = {
     enable = true;
