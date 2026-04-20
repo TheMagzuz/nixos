@@ -49,7 +49,7 @@
           },
         '';
       };
-      ts.enable = true;
+      typescript.enable = true;
       lua.enable = true;
       haskell.enable = true;
       assembly.enable = true;
