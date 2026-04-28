@@ -108,6 +108,7 @@
     };
     settings = {
       enable_audio_bell = false;
+      scrollback_lines = 100000;
     };
   };
 
