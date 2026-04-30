@@ -221,6 +221,7 @@
     enable = true;
     defaultApplications = {
       "text/html" = "librewolf.desktop";
+      "application/pdf" = "zathura.desktop";
       "x-scheme-handler/http" = "librewolf.desktop";
       "x-scheme-handler/https" = "librewolf.desktop";
       "x-scheme-handler/about" = "librewolf.desktop";
