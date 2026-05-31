@@ -84,7 +84,6 @@
     typst
     thunderbird
     dust
-    ungoogled-chromium
   ];
   programs.zsh = {
     enable = true;
