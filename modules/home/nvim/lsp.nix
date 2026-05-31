@@ -56,7 +56,7 @@
       csharp = {
         enable = true;
         extensions.roslyn-nvim.enable = true;
-        lsp.servers = ["roslyn"];
+        lsp.servers = ["roslyn-ls"];
       };
       python = {
         enable = true;
