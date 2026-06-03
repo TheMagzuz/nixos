@@ -12,6 +12,7 @@
     ../../modules/home/nushell.nix
     ../../modules/home/gtk.nix
     ../../modules/home/gc.nix
+    ../../modules/home/devenv.nix
   ];
   home.username = "magz";
   home.homeDirectory = "/home/magz";
