@@ -109,6 +109,8 @@
     settings = {
       enable_audio_bell = false;
       scrollback_lines = 100000;
+      # having autoreload enabled causes kitty to create watches for the entire /nix/store directory which breaks stuff
+      auto_reload_config = -1;
     };
   };
 
