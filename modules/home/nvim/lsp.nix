@@ -49,7 +49,14 @@
           },
         '';
       };
-      typescript.enable = true;
+      typescript = {
+        enable = true;
+        extraDiagnostics.enable = true;
+      };
+      tsx = {
+        enable = true;
+        extraDiagnostics.enable = true;
+      };
       lua.enable = true;
       haskell.enable = true;
       assembly.enable = true;
