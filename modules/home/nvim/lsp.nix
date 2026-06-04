@@ -93,5 +93,14 @@
         '';
       };
     };
+    # HACK: indentexpr is currently broken in C# files, so just disable it
+    # See https://github.com/NotAShelf/nvf/issues/1339
+    autocmds = [
+      {
+        event = ["BufEnter"];
+        pattern = ["*.cs"];
+        command = "setlocal indentexpr=\"\"";
+      }
+    ];
   };
 }
