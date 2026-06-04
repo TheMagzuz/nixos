@@ -6,8 +6,8 @@
       flavor-repo = pkgs.fetchFromGitHub {
         owner = "yazi-rs";
         repo = "flavors";
-        rev = "68326b4ca4b5b66da3d4a4cce3050e5e950aade5";
-        hash = "sha256-nhIhCMBqr4VSzesplQRF6Ik55b3Ljae0dN+TYbzQb5s=";
+        rev = "0f9204bc948c8313963f5c9d571a82edc201f8aa";
+        hash = "sha256-qWNArjWuxWL+rOjLzyIniW5hJgWiAWTCgXmMXJpaWZE=";
       };
     in {
       dracula = "${flavor-repo}/dracula.yazi";
