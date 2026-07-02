@@ -13,6 +13,7 @@
     ../../modules/home/gtk.nix
     ../../modules/home/gc.nix
     ../../modules/home/devenv.nix
+    ../../modules/home/jujutsu.nix
   ];
   home.username = "magz";
   home.homeDirectory = "/home/magz";
