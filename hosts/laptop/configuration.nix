@@ -9,6 +9,8 @@ _: {
     enable = true;
   };
 
+  services.xserver.xkb.options = "caps:swapescape";
+
   hardware.acpilight.enable = true;
   users.users."magz".extraGroups = ["video"];
 }
