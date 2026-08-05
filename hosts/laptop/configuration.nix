@@ -2,6 +2,7 @@ _: {
   imports = [
     ./gpu.nix
     ./hardware-configuration.nix
+    ../../modules/podman.nix
   ];
   networking.hostName = "vulpes";
   powerManagement.enable = true;
