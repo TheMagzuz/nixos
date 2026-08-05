@@ -37,14 +37,12 @@
     font-1 = "HanaMinA:size=10;2";
 
     modules-left = "xworkspaces i3 xwindow";
-    modules-right = "pulseaudio filesystem network memory cpu battery date";
+    modules-right = "pulseaudio filesystem network memory cpu battery date tray";
 
     cursor-click = "pointer";
     cursor-scroll = "ns-resize";
 
     enable-ipc = "true";
-
-    tray-position = "right";
   };
 
   "module/xworkspaces" = {
@@ -52,7 +50,7 @@
 
     label-active = "%name%";
     label-active-background = "\${colors.background-alt}";
-    label-active-underline= "\${colors.primary}";
+    label-active-underline = "\${colors.primary}";
     label-active-padding = "1";
 
     label-occupied = "%name%";
@@ -182,9 +180,12 @@
     label-foreground = "\${colors.primary}";
   };
 
+  "module/tray" = {
+    type = "internal/tray";
+  };
+
   "settings" = {
     screenchange-reload = "true";
     pseudo-transparency = "false";
   };
-
 }
