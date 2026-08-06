@@ -19,11 +19,19 @@
       lightbulb.enable = true;
       otter-nvim.enable = true;
       trouble.enable = true;
-      servers.nixd.init_options = let
-        flake = ''(builtins.getFlake "${inputs.self}")'';
-      in {
-        nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
-        nixos.expr = "${flake}.nixosConfigurations.vulpes.options";
+      servers = {
+        nixd.init_options = let
+          flake = ''(builtins.getFlake "${inputs.self}")'';
+        in {
+          nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
+          nixos.expr = "${flake}.nixosConfigurations.vulpes.options";
+        };
+        rust-analyzer.settings = {
+          rust-analyzer = {
+            cargo = {allFeatures = true;};
+            check = {command = "clippy";};
+          };
+        };
       };
     };
     languages = {
@@ -42,12 +50,6 @@
       rust = {
         enable = true;
         extensions.crates-nvim.enable = true;
-        lsp.opts = ''
-          ['rust-analyzer'] = {
-            cargo = {allFeatures = true},
-            check = {command = "clippy"},
-          },
-        '';
       };
       typescript = {
         enable = true;

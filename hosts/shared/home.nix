@@ -44,6 +44,7 @@
   };
 
   home.pointerCursor = {
+    enable = true;
     name = "Adwaita";
     gtk.enable = true;
     x11.enable = true;
