@@ -26,12 +26,6 @@
           nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
           nixos.expr = "${flake}.nixosConfigurations.vulpes.options";
         };
-        rust-analyzer.settings = {
-          rust-analyzer = {
-            cargo = {allFeatures = true;};
-            check = {command = "clippy";};
-          };
-        };
       };
     };
     languages = {
@@ -49,7 +43,36 @@
       };
       rust = {
         enable = true;
-        extensions.crates-nvim.enable = true;
+        lsp.enable = false;
+        extensions = {
+          crates-nvim.enable = true;
+          rustaceanvim = {
+            enable = true;
+            setupOpts = {
+              server = {
+                cmd = [
+                  (lib.getExe
+                    pkgs.rust-analyzer)
+                ];
+                on_attach = lib.mkLuaInline ''
+                  function(client, bufnr)
+                      default_on_attach(client, bufnr)
+                      local opts = { noremap=true, silent=true, buffer = bufnr }
+
+                      vim.keymap.set("n", "<localleader>rr", ":RustLsp runnables<CR>", opts)
+                      vim.keymap.set("n", "<localleader>rp", ":RustLsp parentModule<CR>", opts)
+                      vim.keymap.set("n", "<localleader>rm", ":RustLsp expandMacro<CR>", opts)
+                      vim.keymap.set("n", "<localleader>rc", ":RustLsp openCargo<CR>", opts)
+                      vim.keymap.set("n", "<localleader>rd", ":RustLsp openDocs<CR>", opts)
+                      vim.keymap.set("n", "<localleader>re", ":RustLsp renderDiagnostic<CR>", opts)
+                      vim.keymap.set("n", "K", ":RustLsp hover actions<CR>", {silent=true, buffer=bufnr})
+                      vim.keymap.set("n", "<leader>la", function() vim.cmd.RustLsp("codeAction") end, {silent=true, buffer=bufnr})
+                  end
+                '';
+              };
+            };
+          };
+        };
       };
       typescript = {
         enable = true;
