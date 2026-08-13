@@ -83,7 +83,11 @@
         extraDiagnostics.enable = true;
       };
       lua.enable = true;
-      haskell.enable = true;
+      haskell = {
+        enable = true;
+        lsp.enable = false;
+        extensions.haskell-tools.enable = true;
+      };
       assembly.enable = true;
       csharp = {
         enable = true;
