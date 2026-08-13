@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home.shell.enableNushellIntegration = true;
   programs.nushell = {
     enable = true;
@@ -12,6 +16,8 @@
     };
     shellAliases = {
       "fg" = "job unfreeze";
+      "copy" = "${lib.getExe pkgs.xclip} -sel clip";
+      "paste" = "${lib.getExe pkgs.xclip} -sel clip -o";
     };
     extraConfig = ''
       def nix-init [] {
