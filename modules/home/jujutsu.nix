@@ -20,6 +20,11 @@
         revsets = {
           "bookmark-advance-to" = "closest_pushable(@)";
         };
+        signing = {
+          behavior = "own";
+          backend = "gpg";
+          key = "0x465204693EB08329";
+        };
       };
     };
     delta.enableJujutsuIntegration = true;
