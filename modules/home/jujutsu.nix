@@ -11,6 +11,15 @@
           name = "magz";
           email = "magz@noreply.codeberg.org";
         };
+        revset-aliases = {
+          "closest_pushable(to)" = {
+            definition = "heads(::to & mutable() & ~empty() & description(regex:\".+\"))";
+            doc = "Closest mutable, non-empty, described commits at or behind to";
+          };
+        };
+        revsets = {
+          "bookmark-advance-to" = "closest_pushable(@)";
+        };
       };
     };
     delta.enableJujutsuIntegration = true;
