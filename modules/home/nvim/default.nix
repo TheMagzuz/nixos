@@ -14,6 +14,7 @@
     ./flash.nix
     ./rainbow-delimiters.nix
     ./snippets
+    ./snacks.nix
   ];
   programs.nvf = {
     enable = true;
