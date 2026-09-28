@@ -86,7 +86,10 @@
       haskell = {
         enable = true;
         lsp.enable = false;
-        extensions.haskell-tools.enable = true;
+        extensions.haskell-tools = {
+          enable = true;
+          setupOpts.hls.cmd = ["haskell-language-server" "--lsp"];
+        };
       };
       assembly.enable = true;
       csharp = {
