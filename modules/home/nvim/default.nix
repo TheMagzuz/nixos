@@ -16,6 +16,7 @@
     ./snippets
     ./snacks.nix
     ./teamtype.nix
+    ./obsidian.nix
   ];
   programs.nvf = {
     enable = true;
