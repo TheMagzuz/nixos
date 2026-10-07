@@ -82,6 +82,10 @@
         enable = true;
         extraDiagnostics.enable = true;
       };
+      svelte = {
+        enable = true;
+        extraDiagnostics.enable = true;
+      };
       lua.enable = true;
       haskell = {
         enable = true;
