@@ -15,6 +15,7 @@
     ./rainbow-delimiters.nix
     ./snippets
     ./snacks.nix
+    ./teamtype.nix
   ];
   programs.nvf = {
     enable = true;
